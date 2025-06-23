@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pesan Bag Tag Akrilik</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .wrapper {
+      padding: 16px;
+    }
+    form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      max-width: 480px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .deskripsi {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    select, input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .hint {
+      font-size: 12px;
+      color: #888;
+      margin-top: 4px;
+    }
+    button {
+      width: 100%;
+      margin-top: 20px;
+      background-color: #25d366;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1ebe5d;
+    }
+    .note {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #d35400;
+      background: #fff6e5;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .note b {
+      display: block;
+      font-size: 16px;
+      color: #c0392b;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <form onsubmit="sendToWhatsApp(); return false;">
+      <h2>Pesan "Bag Tag Akrilik"</h2>
+      <div class="deskripsi">
+        Luggage tag atau bag tag adalah aksesoris penting untuk tas atau koper yang berfungsi sebagai tanda pengenal, memudahkan identifikasi, dan mencegah tertukar, terutama bagi yang sering traveling atau bekerja di lingkungan dengan banyak orang.
+      </div>
+
+      <label>Nama Anda</label>
+      <input type="text" id="nama" required>
+
+      <label>Nomor WhatsApp Anda</label>
+      <input type="tel" id="nowa" pattern="[0-9]+" required>
+
+      <label>Dengan Bahan</label>
+      <select id="bahan" required>
+        <option value="" disabled selected>Pilih Bahan</option>
+        <option value="Akrilik Bening 5 mm">Akrilik Bening 5 mm</option>
+        <option value="Akrilik Putih 5 mm">Akrilik Putih 5 mm</option>
+        <option value="Akrilik Hitam 5 mm">Akrilik Hitam 5 mm</option>
+      </select>
+
+      <label>Lebar (cm)</label>
+      <input type="number" id="lebar" min="1" required>
+
+      <label>Tinggi (cm)</label>
+      <input type="number" id="tinggi" min="1" required>
+
+      <label>Cetak Sisi</label>
+      <select id="sisi" required>
+        <option value="" disabled selected>Pilih Sisi Cetak</option>
+        <option value="1 Sisi (Depan Aja)">1 Sisi (Depan Aja)</option>
+        <option value="2 Sisi (Depan Belakang)">2 Sisi (Depan Belakang)</option>
+      </select>
+
+      <label>Jumlah</label>
+      <input type="number" id="jumlah" min="1" required>
+
+      <label>Anda Membutuhkan Print Ini Kapan?</label>
+      <input type="date" id="tanggal" required>
+
+      <label>Pada Jam Berapa?</label>
+      <input type="time" id="jam" required>
+
+      <label>Catatan Khusus Untuk Admin Kami</label>
+      <textarea id="catatan" rows="4" placeholder="Contoh: Bentuk mengikuti desain yang rapi atau bentuk kotak rounded, dll."></textarea>
+
+<div class="note">
+        <b>Penting !</b>
+        Estimasi Dateline Yang Anda Atur Bisa Berubah Sesuai Kondisi Antrian, Anda Bisa Atur Negosiasi Waktu Dateline Dengan Admin Kami. <b>"Pastikan File Anda Ready / Siap Print"</b>
+      </div>
+
+      <button type="submit">Cek Harga ke Admin Metropolis Print</button>
+
+        </form>
+  </div>
+
+  <script>
+    function formatTanggalIndo(tanggalInput) {
+      const bulanIndo = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                         "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+      const hariIndo = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+
+      const dateObj = new Date(tanggalInput);
+      const hari = hariIndo[dateObj.getDay()];
+      const tanggal = dateObj.getDate();
+      const bulan = bulanIndo[dateObj.getMonth()];
+      const tahun = dateObj.getFullYear();
+
+      return `${hari}, ${tanggal} ${bulan} ${tahun}`;
+    }
+
+    function sendToWhatsApp() {
+      const nama = document.getElementById("nama").value;
+      const nowa = document.getElementById("nowa").value;
+      const bahan = document.getElementById("bahan").value;
+      const lebar = document.getElementById("lebar").value;
+      const tinggi = document.getElementById("tinggi").value;
+      const sisi = document.getElementById("sisi").value;
+      const jumlah = document.getElementById("jumlah").value;
+      const tanggalRaw = document.getElementById("tanggal").value;
+      const tanggal = formatTanggalIndo(tanggalRaw);
+      const jam = document.getElementById("jam").value;
+      const catatan = document.getElementById("catatan").value || "-";
+
+      const adminWa = "6281216370657";
+
+      const pesan =
+        `📌 Pemesanan Bag Tag Akrilik\n\n` +
+        `👤 Nama: ${nama}\n` +
+        `📱 No. WA: ${nowa}\n` +
+        `🧱 Bahan: ${bahan}\n` +
+        `📏 Ukuran: ${lebar} cm x ${tinggi} cm\n` +
+        `🖨️ Cetak: ${sisi}\n` +
+        `🔢 Jumlah: ${jumlah} pcs\n` +
+        `🗓️ Hari Dateline: ${tanggal}\n` +
+        `⏰ Jam Dateline: ${jam}\n` +
+        `📝 Catatan: ${catatan}`;
+
+      const url = `https://wa.me/${adminWa}?text=${encodeURIComponent(pesan)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
